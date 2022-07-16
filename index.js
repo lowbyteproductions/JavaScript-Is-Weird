@@ -1,7 +1,12 @@
+const True = "!![]";
+
 const zero = "+[]";
-const one = "+!![]";
-const two = "(!![]+ !![])";
-const three = "(!![]+ !![]+ !![])";
+const one = `+${True}`;
+const two = `(${True}+ ${True})`;
+const three = `(${two}+ ${True})`;
+const four = `${two}*${two}`;
+const five = `${four}+ ${True}`;
+const six = `${two}*${three}`;
 
 const number = (n) => {
     const toNum = (num) => {
@@ -9,8 +14,11 @@ const number = (n) => {
         if (num == 0) return zero;
         if (num == 2) return two;
         if (num == 3) return three;
-        if (num == 4) return `${two}*${two}`;
-        if (num == 6) return `${two}*${three}`;
+        if (num == 4) return four;
+        if (num == 5) return five;
+        if (num == 6) return six;
+        if (num == 7) return `(${four}+ ${three})`;
+        if (num == 8) return `${two}*${four}`;
         if (num == 9) return `${three}*${three}`;
 
         return Array.from({ length: num }, () => one).join("+ ");
@@ -28,7 +36,9 @@ const number = (n) => {
         })
         .join("");
 
-    return `+(${digits})`;
+    const result = `+(${digits})`;
+    if (eval(result) != n) throw new Error(`Failed to convert the number \`${n}\`, instead got ${eval(result)}!\ncode: ${result}`);
+    return result;
 };
 
 const map = {};
