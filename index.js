@@ -5,11 +5,13 @@ const three = "(!![]+ !![]+ !![])";
 
 const number = (n) => {
     const toNum = (num) => {
+        // Hardcoded numbers to reduce the length as much as possible
         if (num == 0) return zero;
         if (num == 2) return two;
         if (num == 3) return three;
-        if (num == 6) return `${two} * ${three}`;
-        if (num == 9) return `${three} * ${three}`;
+        if (num == 4) return `${two}*${two}`;
+        if (num == 6) return `${two}*${three}`;
+        if (num == 9) return `${three}*${three}`;
 
         return Array.from({ length: num }, () => one).join("+ ");
     };
@@ -19,10 +21,10 @@ const number = (n) => {
     const digits = (n + [])
         .split("")
         .map((digit) => toNum(+digit))
-        .map((digit) => `(${digit}+[])`)
+        .map((digit) => `${digit}+[]`)
         .map((digit, index) => {
             if (index == length - 1) return digit;
-            return digit + "+";
+            return digit + "+ ";
         })
         .join("");
 
