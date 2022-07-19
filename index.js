@@ -3,7 +3,10 @@ const one = '+!![]';
 
 const number = n => {
   if (n === 0) return zero;
-  return Array.from({length: n}, () => one).join(' + ');
+  if (n < 10 && n > 0) return Array.from({length: n}, () => one).join('+ ');
+  const numbArr = n.toString().split('').map((numbStr) => `(${number(Number(numbStr))})`);
+  numbArr[0] += '+[]'
+  return `+(${numbArr.join('+')})`
 }
 
 // C
