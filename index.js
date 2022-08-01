@@ -37,7 +37,7 @@ map.p = `([]+(/-/)[${fromString('constructor')}])[${number(14)}]`;
 map['\\'] = `(/\\{/+[])[${number(1)}]`;
 map.d = `(${number(13)})[${fromString('toString')}](${number(14)})`;
 map.h = `(${number(17)})[${fromString('toString')}](${number(18)})`;
-map.m = `(${number(22)})[${fromString('toString')}](${number(23)})`;
+map.m = `([]+(+[])[${fromString('constructor')}])[${number(11)}]`; // using the string 'function Number' to extract the 'm'
 map.C = `((()=>{})[${fromString('constructor')}](${fromString('return escape')})()(${map['\\']}))[${number(2)}]`;
 
 const compile = code => `(()=>{})[${fromString('constructor')}](${fromString(code)})()`;
