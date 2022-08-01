@@ -21,7 +21,7 @@ const fromString = s =>s.split('').map(x => {
 map.a = `(+{}+[])[${number(1)}]`;
 map.b = `({}+[])[${number(2)}]`;
 map.o = `({}+[])[${number(1)}]`;
-map.e = `({}+[])[${number(4)}]`;
+map.e = `(!![]+[])[${number(3)}]`;
 map.c = `({}+[])[${number(5)}]`;
 map.t = `(!![]+[])[${number(0)}]`;
 map[' '] = `({}+[])[${number(7)}]`;
