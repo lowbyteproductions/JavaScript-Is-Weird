@@ -1,3 +1,8 @@
+const fs = require("fs")
+
+const myArgs = process.argv.slice(2) + [];
+console.log('myArgs: ', myArgs);
+
 const zero = '+[]';
 const one = '+!![]';
 
@@ -42,4 +47,13 @@ map.C = `((()=>{})[${fromString('constructor')}](${fromString('return escape')})
 
 const compile = code => `(()=>{})[${fromString('constructor')}](${fromString(code)})()`;
 
-console.log(compile('console.log("Hello world!");'));
+fs.readFile(myArgs, 'utf8', function (err,data) {
+    if (err) {
+    return console.log(err);
+  }
+  fs.writeFile('./output.js', compile(data),function (err) {
+    if (err) {
+      return console.log(err);
+    }
+  });
+});
