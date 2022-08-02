@@ -51,7 +51,7 @@ fs.readFile(myArgs, 'utf8', function (err,data) {
     if (err) {
     return console.log(err);
   }
-  fs.writeFile('./output.js', compile(myArgs),function (err,data) {
+  fs.writeFile('./output.js', compile(data),function (err) {
     if (err) {
       return console.log(err);
     }
