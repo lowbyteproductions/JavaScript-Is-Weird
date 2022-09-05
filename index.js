@@ -8,7 +8,7 @@ const four = `${two}*${two}`;
 const five = `${four}+ ${True}`;
 const six = `${two}*${three}`;
 
-const number = (n) => {
+const number = (n, c = false) => {
     const toNum = (num) => {
         // Hardcoded numbers to reduce the length as much as possible
         if (num == 0) return zero;
@@ -31,8 +31,8 @@ const number = (n) => {
         .map((digit) => toNum(+digit))
         .map((digit) => `${digit}+[]`)
         .map((digit, index) => {
-            if (index == length - 1) return digit;
-            return digit + "+ ";
+            if (index == length - 1) return `(${digit})`;
+            return `(${digit})+ `;
         })
         .join("");
 
